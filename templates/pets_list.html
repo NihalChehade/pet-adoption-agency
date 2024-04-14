@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Pets List{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        {% for pet in pets %}
+        <div class="col">
+            
+            <img src="{% if pet.photo_url %}{{pet.photo_url}}{% else %}https://cdn-icons-png.flaticon.com/512/2088/2088099.png {% endif %} " alt="" class="img-fluid img-thumbnail">
+
+            <a href="/{{pet.id}}" class="text-success">{{pet.name}}</a>
+            <b class="fw-bold text-secondary-emphasis"> is {% if pet.available == True%}available{% else %}unavailable{% endif %}!</b>
+         
+        </div>
+        {% endfor %}
+    </div>
+    <form class="mt-4">
+        <button class="btn btn-success btn-lg"
+                formaction="/add"
+                formmethod="GET">Add a Pet</button>
+      
+      </form>
+   
+</div>
+{% endblock %}

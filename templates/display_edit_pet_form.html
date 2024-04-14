@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Display/Edit Pet {% endblock %}
+
+{% block main %}
+
+<div class="card" style="width: 18rem;">
+    <img src="{% if pet.photo_url %}{{pet.photo_url}}{% else %}https://cdn-icons-png.flaticon.com/512/2088/2088099.png {% endif %} " class="card-img-top" alt="">
+    <div class="card-body">
+      <h5 class="card-title">{{pet.name}}</h5>
+      <p class="card-text">{{pet.notes}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Age: {{pet.age}}</li>
+      <li class="list-group-item">Species: {{pet.species}}</li>
+      <!-- <li class="list-group-item">A third item</li> -->
+    </ul>
+  </div>
+  
+  {% for field, errors in form.errors.items() %}
+  <div class="alert alert-danger mt-3" role="alert">
+    {{ ', '.join(errors) }}
+  </div>
+    {% endfor %}
+  
+  <form class="form-group mt-4" method="POST">  
+   
+    {{ form.csrf_token() }}
+    {{form.photo_url.label(class_="text-info")}}
+    {{form.photo_url(class_="form-control form-control-lg")}}
+    {{form.notes.label(class_="text-info")}}
+    {{form.notes(class_="form-control form-control-lg")}}
+    {{form.available.label(class_="text-info")}}
+    {{form.available}}<br>
+
+
+    <button type="submit" class="btn btn-success btn-lg">Submit</button>
+  </form>
+  
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block title %}Add Pet Form{% endblock %} {% block
+main %}
+<h1 class="display-1 text-center">Add a pet!</h1>
+<div class="container justify-content-center">
+  <div class="row">
+    <div class="col">
+      <form class="form-group" id="pet-add-form" method="POST">
+        {{ form.hidden_tag() }}
+        {{form.name.label(class_="text-info")}}
+        {{form.name(class_="form-control form-control-lg")}}
+        {{form.species.label(class_="text-info")}}
+        {{form.species(class_="form-control form-control-lg")}}
+        {{form.photo_url.label(class_="text-info")}}
+        {{form.photo_url(class_="form-control form-control-lg")}}
+        {{form.age.label(class_="text-info")}}
+        {{form.age(class_="form-control form-control-lg")}}
+        {{form.notes.label(class_="text-info")}}
+        {{form.notes(class_="form-control form-control-lg")}}
+        {{form.available.label(class_="text-info")}}
+        {{form.available}}
+        
+        <p><button type="submit" class="btn btn-success btn-lg">Submit</button></p>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
